@@ -1,5 +1,3 @@
-//https://www.sitepoint.com/simple-javascript-quiz/
-
 var startBtn = document.querySelector(".start_btn");
 var quitBtn = document.querySelector(".quit");
 var question = document.querySelector(".question");
@@ -9,7 +7,8 @@ var btn3 = document.querySelector(".btn3");
 var timerElement = document.querySelector(".timer");
 var timerCount = 60;
 var questionInterval = 0;
-var correctAnswers = ["c","a","b","a"]
+
+var score = localStorage.getItem(".timer")
 
 var questions = [
     {
@@ -48,6 +47,8 @@ var questions = [
     }
 ];
 
+
+
 function nextQuestion(){
     if (questionInterval == questions.length){
         endQuiz();
@@ -61,19 +62,23 @@ function nextQuestion(){
 
 }};
 
+function endQuiz(){
+  
+}
 
 function checkAnswer (event){
   const userAnswer = event.target.innerText;
   const correctAnswer = questions[questionInterval].correctAnswer;
   if(userAnswer !== correctAnswer){
-    timerCount -= 5;
+    timerCount -= 15;
   }
   nextQuestion();
 }
 
-function endQuiz(){
-    alert("All done")
-};
+//timerElement.addEvenListener("click", function(){
+ // localStorage.setItem("count", count)
+//});
+
 
 
 function startGame() {
@@ -89,12 +94,6 @@ function startGame() {
       timerCount--;
       timerElement.textContent = timerCount;
       if (timerCount >= 0) {
-        // Tests if win condition is met
-       // if (isWin && timerCount > 0) {
-          // Clears interval and stops timer
-       //   clearInterval(timer);
-       //   winGame();
-        //}
       }
       // Tests if time has run out
       if (timerCount < 0) {
@@ -105,6 +104,12 @@ function startGame() {
       }
     }, 1000);
   }
+  
+  //function keepScore() {
+   // if (endQuiz == true){
+    //  score.textcontent = timerCount;
+    //}
+  //}
 
   startBtn.addEventListener("click", startGame)
   btn1.addEventListener("click", checkAnswer)
