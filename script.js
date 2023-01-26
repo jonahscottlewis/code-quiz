@@ -18,7 +18,7 @@ var questions = [
         b: "Hippo Monkey Tiger Lion",
         c: "Hyper Text Markup Language"
       },
-        correctAnswers: 'Hyper Text Markup Language'
+        correctAnswer: 'Hyper Text Markup Language'
     },{
         
         question: "What does CSS stand for?",
@@ -27,7 +27,7 @@ var questions = [
          b: "Computer Simon Says",
          c: "Camp Sea Shell"
         },
-        correctAnswers: "Cascading Style Sheets"
+        correctAnswer: "Cascading Style Sheets"
     },{
         question: "What is the correct way to write an array in JavaScript?",
         answer: {
@@ -35,7 +35,7 @@ var questions = [
         b: "var num=[1,2,3]",
         c: "var num={1,2,3}"
       },
-        correctAnswers: 'var num=[1,2,3]'
+        correctAnswer: 'var num=[1,2,3]'
     },{
         question: "A string can be converted to an array using which method?",
         answer: {
@@ -50,27 +50,32 @@ var questions = [
 
 
 function nextQuestion(){
-    if (questionInterval == questions.length){
-        endQuiz();
+    if (questionInterval <= questions.length && timerCount > 0){
+      question.textContent = questions[questionInterval].question;
+      btn1.textContent = questions[questionInterval].answer.a;
+      btn2.textContent = questions[questionInterval].answer.b;
+      btn3.textContent = questions[questionInterval].answer.c;
+      questionInterval++
+      btn1.addEventListener("click", checkAnswer)
+      btn2.addEventListener("click", checkAnswer)
+      btn3.addEventListener("click", checkAnswer) 
     } else {
 
-    question.textContent = questions[questionInterval].question;
-    btn1.textContent = questions[questionInterval].answer.a;
-    btn2.textContent = questions[questionInterval].answer.b;
-    btn3.textContent = questions[questionInterval].answer.c;
-    questionInterval++
+    endQuiz();
 
 }};
 
 function endQuiz(){
-  
+  clearInterval(timer);
 }
 
 function checkAnswer (event){
   const userAnswer = event.target.innerText;
-  const correctAnswer = questions[questionInterval].correctAnswer;
-  if(userAnswer !== correctAnswer){
-    timerCount -= 15;
+  console.log(userAnswer);
+  const correctAnswer = questions[questionInterval-1].correctAnswer;
+  console.log(correctAnswer);
+  if(userAnswer != correctAnswer){ //if(userAnswer != correctAnswer && timer > 15)
+    timerCount -= 15;              // else is (timer < 15){endQuiz()}
   }
   nextQuestion();
 }
@@ -96,7 +101,7 @@ function startGame() {
       if (timerCount >= 0) {
       }
       // Tests if time has run out
-      if (timerCount < 0) {
+      if (timerCount <= 0) {
         // Clears interval
         timerCount = 0
         clearInterval(timer);
@@ -110,11 +115,10 @@ function startGame() {
     //  score.textcontent = timerCount;
     //}
   //}
-
+  
   startBtn.addEventListener("click", startGame)
-  btn1.addEventListener("click", checkAnswer)
-  btn2.addEventListener("click", checkAnswer)
-  btn3.addEventListener("click", checkAnswer)
+  quitBtn.addEventListener("click", startGame)
+ 
   
   
 
