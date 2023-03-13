@@ -1,8 +1,10 @@
 # Code Quiz
 
-# Description
+## Description
+
 Using HTML, CSS and JavaScript I will create a code trivia quiz. The user will be given 60 seconds to answer the questions correctly. each time the use selects incorrect answers they will lose 15 seconds from their remaining time. 
 
-# Requirements 
-I have to write the HTML, CSS and JavaScript to create the code quiz. The code must be written so that the quiz will function properly and executes the rules which are given to the user.
+## GitHub 
 
+https://github.com/jonahscottlewis/code-quiz-4
+https://jonahscottlewis.github.io/code-quiz-4/
