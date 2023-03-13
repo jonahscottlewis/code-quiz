@@ -1,2 +1,26 @@
-body
+body {
+    display: block;
+    align-items: center;
+    background-color: rgb(0, 102, 255);
+}
 
+header {
+    text-align: center;
+}
+
+.info_box{
+ text-align: center
+};
+
+.quiz{
+ text-align: center;
+
+ 
+}
+button {
+    background-color: red;
+}
+
+/*.score{
+    visibility: hidden;
+}*/

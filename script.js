@@ -88,7 +88,7 @@ function endQuiz() {
  
   // user the endscore el insert ther score with textcontent
   endScore.textContent = score;
-  // var fromLs = JSON.parse(localStorage.getItem('userInput'))
+  /*score. = "visibility:visible";*/
 }
 
 function checkAnswer(event) {
