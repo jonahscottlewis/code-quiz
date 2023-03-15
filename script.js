@@ -1,4 +1,7 @@
 var startBtn = document.querySelector(".start_btn");
+var highScores = document.querySelector(".score_card");
+var savedScores = JSON.parse(localStorage.getItem('userScore')) || [];
+var clearBtn = document.querySelector(".clear_scores");
 var question = document.querySelector(".question");
 var btn1 = document.querySelector(".btn1");
 var btn2 = document.querySelector(".btn2");
@@ -46,6 +49,7 @@ var questions = [
   }
 ];
 
+//Looping through each question and ending quiz 
 function nextQuestion() {
   if (questionInterval < questions.length && timerCount > 0) {
     question.textContent = questions[questionInterval].question;
@@ -56,7 +60,7 @@ function nextQuestion() {
     btn1.addEventListener("click", checkAnswer)
     btn2.addEventListener("click", checkAnswer)
     btn3.addEventListener("click", checkAnswer)
-  } else  {
+  } else {
 
     endQuiz();
   }
@@ -85,6 +89,28 @@ function endQuiz() {
   var highScores = document.querySelector(".score_card");
   highScores.textContent = userInput;
   /*score. = "visibility:visible";*/
+}
+
+function displayHistory() {
+  var highScores = document.querySelector(".score_card");
+  highScores.innerHTML = "";
+  // high scores list
+  if (localStorage.getItem('userScore')) {
+   for (var i = savedScores.length < 5 ? 0 : savedScores.length -5; i < savedScores.length; i++ ){
+      var scores = document.createElement('h4');
+      // giving class so can be grabbed with querySelector and used in searchRecent function below
+      
+      scores.innerHTML = savedScores[i];
+      scores.addEventListener(onload, function (event) {
+        savedScores.value = event.target.textContent;
+      })
+      highScores.append(scores)
+    }
+  }
+} displayHistory()
+
+function clearHistory() {
+  localStorage.clear();
 }
 
 function checkAnswer(event) {
@@ -123,3 +149,4 @@ function startTimer() {
 }
 
 startBtn.addEventListener("click", startGame)
+clearBtn.addEventListener("click", clearHistory)

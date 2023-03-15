@@ -1,5 +1,7 @@
-html, body {
+html,
+body {
     height: 75%;
+    width: 30%;
 
 }
 
@@ -16,10 +18,9 @@ body {
 
 header {
     text-align: center;
-    
     border: solid;
     border-color: black;
-    border-radius: 5%;
+
 
 }
 
@@ -31,22 +32,31 @@ header {
 
 .quiz {
     display: block;
-    
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    
 
+}
+
+.timer_box {
+    margin-left: 47%;
+}
+
+.timer {
+    width: 15%;
+    text-align: center;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2)
 }
 
 button {
-    background-color: red;
+    background-color: rgb(68, 133, 219);
+
 }
+
+.start_btn {
+    margin-left: 43%;
+}
+
 
 .high_score {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
 }
-
-
-/*.score{
-    visibility: hidden;
-}*/
