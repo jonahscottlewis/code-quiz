@@ -2,9 +2,11 @@
 
 ## Description
 
-Using HTML, CSS and JavaScript I will create a code trivia quiz. The user will be given 60 seconds to answer the questions correctly. each time the use selects incorrect answers they will lose 15 seconds from their remaining time. 
+Using HTML, CSS and JavaScript I will create a code trivia quiz. The user will be given the rules of the quiz and will be prompted the questions.
 
 ## GitHub 
 
 https://github.com/jonahscottlewis/code-quiz-4
 https://jonahscottlewis.github.io/code-quiz-4/
+
+[screenshot](./assets/Code%20Quiz%20screenshot.png)
