@@ -1,25 +1,51 @@
+html, body {
+    height: 75%;
+
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
 body {
-    display: block;
-    align-items: center;
-    background-color: rgb(0, 102, 255);
+    display: table-cell;
+    vertical-align: middle;
+    background-color: rgb(224, 204, 213);
 }
 
 header {
     text-align: center;
+    
+    border: solid;
+    border-color: black;
+    border-radius: 5%;
+
 }
 
-.info_box{
- text-align: center
-};
-
-.quiz{
- text-align: center;
-
- 
+.info_box {
+    text-align: center;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
+
+
+.quiz {
+    display: block;
+    
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    
+
+}
+
 button {
     background-color: red;
 }
+
+.high_score {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
 
 /*.score{
     visibility: hidden;

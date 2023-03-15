@@ -1,15 +1,13 @@
 var startBtn = document.querySelector(".start_btn");
-var quitBtn = document.querySelector(".quit");
 var question = document.querySelector(".question");
 var btn1 = document.querySelector(".btn1");
 var btn2 = document.querySelector(".btn2");
 var btn3 = document.querySelector(".btn3");
 var timerElement = document.querySelector(".timer");
 var timerCount = 60;
-var endScore = document.querySelector(".score")
+var endScore = document.querySelector(".score");
 var score = 0;
 var questionInterval = 0;
-
 
 var questions = [
   {
@@ -48,8 +46,6 @@ var questions = [
   }
 ];
 
-
-
 function nextQuestion() {
   if (questionInterval < questions.length && timerCount > 0) {
     question.textContent = questions[questionInterval].question;
@@ -60,12 +56,9 @@ function nextQuestion() {
     btn1.addEventListener("click", checkAnswer)
     btn2.addEventListener("click", checkAnswer)
     btn3.addEventListener("click", checkAnswer)
-  } else /*if(response == questions[i].answer){
-      score++
-    } */ {
+  } else  {
 
     endQuiz();
-
   }
 };
 
@@ -76,18 +69,21 @@ function endQuiz() {
 
   // get the time left on timer (timerCount)
   var score = timerCount;
-
   console.log(userInitials, timerCount);
 
-  // put those 2 pieces of data together
-  // array ex : ['jl', '12'] or ex { initials: 'jl', score: '12' }
+  // put those 2 pieces of data together in an array
   var userInput = [userInitials, score];
 
   // put that data into loacal storage
   localStorage.setItem('userScore', JSON.stringify(userInput));
- 
+
+  //Get the userInput back out from JSON
+  //JSON.parse('userScore',userInput);
+
   // user the endscore el insert ther score with textcontent
   endScore.textContent = score;
+  var highScores = document.querySelector(".score_card");
+  highScores.textContent = userInput;
   /*score. = "visibility:visible";*/
 }
 
@@ -101,12 +97,6 @@ function checkAnswer(event) {
   }
   nextQuestion();
 }
-
-//timerElement.addEvenListener("click", function(){
-// localStorage.setItem("count", count)
-//});
-
-
 
 function startGame() {
   // Prevents start button from being clicked when round is in progress
@@ -132,11 +122,4 @@ function startTimer() {
   }, 1000);
 }
 
-//function keepScore() {
-// if (endQuiz == true){
-//  score.textcontent = timerCount;
-//}
-//}
-
 startBtn.addEventListener("click", startGame)
-quitBtn.addEventListener("click", startGame)
